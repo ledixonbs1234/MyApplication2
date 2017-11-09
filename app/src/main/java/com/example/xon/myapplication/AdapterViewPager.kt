@@ -12,8 +12,7 @@ class AdapterViewPager : FragmentPagerAdapter {
     var fragments : ArrayList<Fragment> = ArrayList<Fragment>()
     var titles : ArrayList<String> = ArrayList<String>()
 
-    constructor(fm: FragmentManager?) : super(fm)
-
+    constructor(fm: FragmentManager) : super(fm)
 
     override fun getItem(position: Int): Fragment {
         return fragments.get(position)

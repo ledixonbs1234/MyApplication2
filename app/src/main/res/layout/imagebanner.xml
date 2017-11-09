@@ -13,11 +13,12 @@
     <TextView android:id="@+id/titleid"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Chao cac ban"
-        android:layout_marginTop="80dp"
-        android:layout_marginLeft="60dp"
-        android:textSize="12dp"
-        android:textColor="#fff"
+        android:layout_marginTop="95dp"
+        android:layout_marginLeft="40dp"
+        android:textSize="17sp"
+        android:textColorHighlight="@android:color/holo_blue_bright"
+        android:textColor="#e4d9d9"
+
         />
 
 </FrameLayout>
