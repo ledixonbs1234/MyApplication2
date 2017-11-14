@@ -1,6 +1,7 @@
 package com.example.xon.myapplication
 
 
+import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.view.ViewPager
@@ -14,22 +15,24 @@ import java.util.regex.Pattern
 /**
  * A simple [Fragment] subclass.
  */
-class OnlineFragment : Fragment() {
+class OnlineFragment() : Fragment() {
 
     //Tao list
     var listImage : ArrayList<DataWebModel> = ArrayList()
     lateinit var viewPager : ViewPager
     lateinit var mViewRoot: View
+    lateinit var mContextAc: Context
+    lateinit var sourceWeb: String
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        mViewRoot = inflater!!.inflate(R.layout.fragment_online, container, false)
+        mViewRoot = inflater.inflate(R.layout.fragment_online, container, false)
 
         return mViewRoot
     }
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
        // listImage.add(R.drawable.d1)
@@ -37,8 +40,8 @@ class OnlineFragment : Fragment() {
        // listImage.add(R.drawable.d4)
        // listImage.add(R.drawable.d3)
 
-        var source = "https://mp3.zing.vn"
-        var sourceWeb : String
+        val source = "https://mp3.zing.vn"
+
 
         sourceWeb =  TaskerExample().execute(source).get()
 
@@ -56,9 +59,10 @@ class OnlineFragment : Fragment() {
         }
 
 
-        val adapter = AdapterBanner(listImage, this.context)
+        val adapter = AdapterBanner(listImage, this.context!!, mContextAc)
 
-        viewPager = view!!.findViewById<ViewPager>(R.id.viewpagerBannerId)
+
+        viewPager = view.findViewById(R.id.viewpagerBannerId)
 
         viewPager.setAdapter(adapter)
 
@@ -66,7 +70,11 @@ class OnlineFragment : Fragment() {
         circleIndicator.setViewPager(viewPager)
 
 
-
-
     }
+
+    override fun onAttach(context: Context?) {
+        super.onAttach(context)
+        mContextAc = context!!
+    }
+
 }// Required empty public constructor

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="50dp"
     android:background="?android:selectableItemBackground">
@@ -28,7 +29,7 @@
             android:layout_marginTop="10dp"
             android:text="Toi muon quen Em"
             android:textColor="#000000"
-            android:textSize="15dp" />
+            android:textSize="15sp" />
 
         <TextView
             android:id="@+id/tencasiid"
@@ -41,11 +42,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <Button
+        <ImageButton
             android:id="@+id/btndownloadmusic"
             android:layout_width="50dp"
             android:layout_height="match_parent"
-            android:text="Down" />
+            android:background="#fff"
+            android:text="Down"
+            app:srcCompat="@drawable/ic_file_download_black_24dp" />
     </RelativeLayout>
 
 </LinearLayout>

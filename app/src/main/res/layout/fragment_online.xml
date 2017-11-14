@@ -22,5 +22,10 @@
         app:ci_orientation="horizontal"
         app:ci_gravity="right" />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Day la text thu hang nao" />
+
 
 </FrameLayout>

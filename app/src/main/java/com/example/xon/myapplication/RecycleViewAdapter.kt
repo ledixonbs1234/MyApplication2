@@ -7,19 +7,30 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import com.example.xon.myapplication.InterfaceView.OnClickRec
 import com.example.xon.myapplication.Model.DetailModel
-import com.example.xon.myapplication.Model.InfoDetail
 
 
 /**
+ *
  * Created by XON on 11/2/2017.
  */
-public class RecycleViewAdapter : RecyclerView.Adapter<RecycleViewAdapter.RecyclerViewHolder> {
+class RecycleViewAdapter : RecyclerView.Adapter<RecycleViewAdapter.RecyclerViewHolder> {
     private var data : ArrayList<DetailModel> = ArrayList<DetailModel>()
+    lateinit var playMusic: PlayMusic
+    var singleton: SingletonPlayMusic
+    lateinit var listener: OnClickRec
     //private final var mOnclickListener : View.OnClickListener = View.OnClickListener()
 
-    constructor(data : ArrayList<DetailModel>) : super(){
+    constructor(data: ArrayList<DetailModel>, context: Context) : super() {
         this.data = data
+        singleton = SingletonPlayMusic.instance
+
+        try {
+            listener = context as OnClickRec
+        } catch (e: ClassCastException) {
+            throw ClassCastException(context.toString() + " must implement on View Selected")
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): RecyclerViewHolder {
@@ -31,8 +42,8 @@ public class RecycleViewAdapter : RecyclerView.Adapter<RecycleViewAdapter.Recycl
 
     override fun onBindViewHolder(holder: RecyclerViewHolder?, position: Int) {
         holder!!.songnameid!!.setText(data[position].tenBaiHat)
-        holder!!.tencasiid!!.setText(data[position].caSi)
-        holder!!.countid!!.setText(data[position].stt)
+        holder.tencasiid!!.setText(data[position].caSi)
+        holder.countid!!.setText(data[position].stt)
          }
 
     override fun getItemCount(): Int {
@@ -58,6 +69,13 @@ public class RecycleViewAdapter : RecyclerView.Adapter<RecycleViewAdapter.Recycl
                     var detail : DetailModel = data.get(adapterPosition)
                     Toast.makeText(contexttemp,songnameid!!.getText(),Toast.LENGTH_LONG).show()
 
+                    //Lay list neu co
+                    singleton.mMusics = data
+                    //Play music
+                    singleton.setAndPlayMusic(detail)
+
+                    //callback
+                    listener.onClickRecView()
                 }
             })
         }
