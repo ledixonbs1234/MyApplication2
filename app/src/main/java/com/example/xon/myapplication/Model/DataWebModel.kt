@@ -1,9 +1,9 @@
-package com.example.xon.myapplication
+package com.example.xon.myapplication.Model
 
 /**
  * Created by XON on 11/2/2017.
  */
-public class DataWebModel {
+class DataWebModel {
     val urlWeb : String
     var urlImage : String
     val title : String

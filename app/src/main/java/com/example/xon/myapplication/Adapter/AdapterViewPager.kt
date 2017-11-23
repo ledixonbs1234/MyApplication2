@@ -1,4 +1,4 @@
-package com.example.xon.myapplication
+package com.example.xon.myapplication.Adapter
 
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager

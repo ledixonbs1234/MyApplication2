@@ -5,7 +5,7 @@ import java.util.*
 /**
  * Created by XON on 11/4/2017.
  */
-public class InfoDetail {
+class InfoDetail {
     var Id: String = ""
     var Name: String = ""
     var Title: String = ""
@@ -21,8 +21,6 @@ public class InfoDetail {
     lateinit var ArtistInf : ArtistInfo
     lateinit var Sources: Quality
     var STT : String = ""
-
-    constructor()
 
     // var someProperty: String = ""
    //     get() = field

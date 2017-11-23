@@ -1,4 +1,4 @@
-package com.example.xon.myapplication
+package com.example.xon.myapplication.Adapter
 
 import android.content.Context
 import android.support.v4.view.PagerAdapter
@@ -8,17 +8,20 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
+import com.example.xon.myapplication.InterfaceView.OnClickInterface
+import com.example.xon.myapplication.Model.DataWebModel
+import com.example.xon.myapplication.R
 import com.squareup.picasso.Picasso
 
 /**
+ *
  * Created by XON on 10/31/2017.
  */
 class AdapterBanner(var lstImages: ArrayList<DataWebModel>, var context: Context, contextAc: Context) : PagerAdapter() {
 
     var inflater: LayoutInflater
     // Lam 1 cai activity tai day
-    var listener: OnClickAdapterBanner
-
+    var listener: OnClickInterface
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
 
@@ -30,7 +33,7 @@ class AdapterBanner(var lstImages: ArrayList<DataWebModel>, var context: Context
         val txtTitle: TextView = view.findViewById<TextView>(R.id.titleid)
         //imageButton.setImageResource(lstImages.get(position))
         Picasso.with(view.context).load(lstImages.get(position).urlImage).into(imageButton)
-        txtTitle.setText(lstImages.get(position).title)
+        txtTitle.text = lstImages.get(position).title
 
         imageButton.setOnClickListener(object :View.OnClickListener{
             override fun onClick(v: View?) {
@@ -42,10 +45,7 @@ class AdapterBanner(var lstImages: ArrayList<DataWebModel>, var context: Context
                 //intent.putExtra("URLWeb",lstImages.get(position).urlWeb)
                 //view.context.startActivity(intent)
 
-                listener.onClickButton(lstImages.get(position).urlWeb)
-
-
-
+                listener.openDetailOrPlayerFragment(lstImages.get(position).urlWeb)
             }
         })
 
@@ -68,15 +68,11 @@ class AdapterBanner(var lstImages: ArrayList<DataWebModel>, var context: Context
     init {
         inflater = LayoutInflater.from(context)
         try {
-            listener = contextAc as OnClickAdapterBanner
+            listener = contextAc as OnClickInterface
         } catch (e: ClassCastException) {
             throw ClassCastException(context.toString() + " must implement on View Selected")
         }
     }
 
 
-}
-
-interface OnClickAdapterBanner {
-    fun onClickButton(tag: String)
 }

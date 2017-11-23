@@ -6,7 +6,7 @@
     android:background="?android:selectableItemBackground">
 
     <TextView
-        android:id="@+id/countid"
+        android:id="@+id/countdialogid"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
@@ -15,41 +15,31 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/songnameid"
+        android:id="@+id/songnamedialog"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Toi muon quen Em"
         android:textColor="#000000"
-        android:textSize="13sp"
-        app:layout_constraintStart_toEndOf="@+id/countid"
+        app:layout_constraintStart_toEndOf="@+id/countdialogid"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tencasiid"
+        android:id="@+id/tencasidialog"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Phan Manh Quynh"
-        app:layout_constraintTop_toBottomOf="@id/songnameid"
-        app:layout_constraintStart_toStartOf="@id/songnameid" />
-
-
-    <ImageButton
-        android:id="@+id/btndownloadmusic"
-        android:layout_width="50dp"
-        android:layout_height="match_parent"
-        android:background="#fff"
-        android:text="Down"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_compare_arrows_black_24dp" />
+        app:layout_constraintTop_toBottomOf="@id/songnamedialog"
+        app:layout_constraintStart_toStartOf="@id/songnamedialog" />
 
     <TextView
-        android:id="@+id/qualitydetail"
+        android:id="@+id/qualitydialog"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="#ff3333"
         android:layout_marginTop="8dp"
-        android:text="Lossless"
-        android:textColor="#ff3c42"
-        app:layout_constraintEnd_toStartOf="@id/btndownloadmusic"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/countdialogid" />
+
 
 </android.support.constraint.ConstraintLayout>
