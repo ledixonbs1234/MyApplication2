@@ -35,9 +35,9 @@ class AdapterBanner(var lstImages: ArrayList<DataWebModel>, var context: Context
         Picasso.with(view.context).load(lstImages.get(position).urlImage).into(imageButton)
         txtTitle.text = lstImages.get(position).title
 
-        imageButton.setOnClickListener(object :View.OnClickListener{
+        imageButton.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
-                Log.e("Chao",lstImages.get(position).toString())
+                Log.e("Chao", lstImages.get(position).toString())
 
                 //Lam cac cong viec dua dia chi vao day
                 //Tao intent
@@ -45,7 +45,7 @@ class AdapterBanner(var lstImages: ArrayList<DataWebModel>, var context: Context
                 //intent.putExtra("URLWeb",lstImages.get(position).urlWeb)
                 //view.context.startActivity(intent)
 
-                listener.openDetailOrPlayerFragment(lstImages.get(position).urlWeb)
+                listener.openDetailOrPlayerFragment(lstImages.get(position).urlWeb, null)
             }
         })
 

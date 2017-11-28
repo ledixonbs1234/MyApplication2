@@ -64,7 +64,7 @@ class RecycleViewBXHAdapter : RecyclerView.Adapter<RecycleViewBXHAdapter.Recycle
                     Toast.makeText(contexttemp, songnameid!!.text, Toast.LENGTH_LONG).show()
 
                     //callback
-                    listener.openDetailOrPlayerFragment(detail.linkSong)
+                    listener.openDetailOrPlayerFragment(detail.linkSong, null)
                 }
             })
         }

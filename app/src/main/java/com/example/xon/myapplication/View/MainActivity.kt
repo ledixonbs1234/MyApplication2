@@ -53,14 +53,14 @@ class MainActivity : AppCompatActivity(), OnClickInterface, View.OnClickListener
     }
 
 
-    override fun openDetailOrPlayerFragment(link: String) {
+    override fun openDetailOrPlayerFragment(linkMp3: String, linkWebCSN: String?) {
 
         //Thực hiện kiểm tra link có phải album hay ko
-        if (link.indexOf("album") != -1) {
+        if (linkMp3.indexOf("album") != -1) {
             mFragmentDetail = FragmentDetail()
             //Chuyen du lieu vao fragment
             val bundle = Bundle()
-            bundle.putString("URL", link)
+            bundle.putString("URL", linkMp3)
             mFragmentDetail.arguments = bundle
 
             supportFragmentManager.beginTransaction()
@@ -69,7 +69,7 @@ class MainActivity : AppCompatActivity(), OnClickInterface, View.OnClickListener
                     .addToBackStack("detail")
                     .commit()
         } else {
-            openPlayer(link)
+            openPlayer(linkMp3, linkWebCSN)
         }
 
 
@@ -84,6 +84,7 @@ class MainActivity : AppCompatActivity(), OnClickInterface, View.OnClickListener
     }
 
     fun initView() {
+
 
         //Khoi tao cac view
         mNext = findViewById(R.id.next)
@@ -102,7 +103,7 @@ class MainActivity : AppCompatActivity(), OnClickInterface, View.OnClickListener
 
         mTenBaiHat.setOnClickListener(object : View.OnClickListener {
             override fun onClick(p0: View?) {
-                openPlayer(null)
+                openPlayer(singleton.mCurrentMusic.linkMp3, null)
             }
         })
         //get instance singleton
@@ -117,19 +118,17 @@ class MainActivity : AppCompatActivity(), OnClickInterface, View.OnClickListener
 
     }
 
-    fun openPlayer(link: String?) {
+    fun openPlayer(linkMp3: String, linkWebCSN: String?) {
         //Neu khong co file nguon thi vao fragment Player
         mFrameBar.visibility = View.GONE
 
         mFragmentPlayer = FragmentPlayer()
 
-        if (!link.isNullOrEmpty()) {
-            //Chuyen du lieu vao fragment
-            val bundle = Bundle()
-            bundle.putString("URL", link)
-            mFragmentPlayer.arguments = bundle
-
-        }
+        //Chuyen du lieu vao fragment
+        val bundle = Bundle()
+        bundle.putString("URLMP3", linkMp3)
+        bundle.putString("URLWEBCSN", linkWebCSN)
+        mFragmentPlayer.arguments = bundle
 
         supportFragmentManager.beginTransaction().replace(R.id.main_activity, mFragmentPlayer, "FragmentPlayer")
                 .addToBackStack(null)
@@ -148,18 +147,18 @@ class MainActivity : AppCompatActivity(), OnClickInterface, View.OnClickListener
         when (v!!.id) {
             R.id.prevous -> {
                 singleton.prevousMusic()
-                mTenBaiHat.text = singleton.mCurrentMusic.id
-                mTenCaSi.text = singleton.mCurrentMusic.mainSong.artist
+                mTenBaiHat.text = singleton.mCurrentMusic.songName
+                mTenCaSi.text = singleton.mCurrentMusic.artist
             }
             R.id.next -> {
                 singleton.nextMusic()
-                mTenBaiHat.text = singleton.mCurrentMusic.id
-                mTenCaSi.text = singleton.mCurrentMusic.mainSong.artist
+                mTenBaiHat.text = singleton.mCurrentMusic.songName
+                mTenCaSi.text = singleton.mCurrentMusic.artist
             }
             R.id.playpause -> {
                 singleton.pauseMusic()
-                mTenBaiHat.text = singleton.mCurrentMusic.id
-                mTenCaSi.text = singleton.mCurrentMusic.mainSong.artist
+                mTenBaiHat.text = singleton.mCurrentMusic.songName
+                mTenCaSi.text = singleton.mCurrentMusic.artist
                 if (singleton.mPlayer.isPlaying) {
                     mPlayPause.setImageResource(R.drawable.ic_pause_black_24dp)
                 } else {
@@ -167,7 +166,7 @@ class MainActivity : AppCompatActivity(), OnClickInterface, View.OnClickListener
                 }
             }
             R.id.farmbar -> {
-                openPlayer(null)
+                openPlayer(singleton.mCurrentMusic.linkMp3, null)
             }
         }
     }
@@ -176,8 +175,8 @@ class MainActivity : AppCompatActivity(), OnClickInterface, View.OnClickListener
         //Thuc hien show cai frameLayoutBar
         mFrameBar.visibility = View.VISIBLE
 
-        mTenBaiHat.text = singleton.mCurrentMusic.id
-        mTenCaSi.text = singleton.mCurrentMusic.mainSong.artist
+        mTenBaiHat.text = singleton.mCurrentMusic.songName
+        mTenCaSi.text = singleton.mCurrentMusic.artist
 
         if (singleton.mPlayer.isPlaying) {
             mPlayPause.setImageResource(R.drawable.ic_pause_black_24dp)
@@ -222,8 +221,8 @@ class TaskerExample : AsyncTask<String, String, String>() {
         try {
 
             val URL = URL(params[0])
-
-            //val URL = URL("http://search.chiasenhac.vn/search.php?s=Thuong")
+            //params[0]!!.indexOf("https", 0, false) != -1
+            //val URL = URL("http://chiasenhac.vn/download2.php?v1=1846&v2=1&v3=1YJD2DG-IGbdYXMX&v4=128&v5=sss.mp3")
             if (params[0]!!.indexOf("https", 0, false) != -1) {
                 val connect = URL.openConnection() as HttpsURLConnection
                 connect.readTimeout = 3000
@@ -242,18 +241,6 @@ class TaskerExample : AsyncTask<String, String, String>() {
                 connect.readTimeout = 3000
                 connect.connectTimeout = 3000
                 connect.requestMethod = "GET"
-                connect.addRequestProperty("Connection", "keep-alive")
-                connect.addRequestProperty("Content-Type", "text/html");
-                connect.addRequestProperty("Vary", "Accept-Encoding");
-                connect.addRequestProperty("Vary", "Accept-Encoding");
-                connect.addRequestProperty("Vary", "Accept-Encoding");
-                connect.addRequestProperty("Vary", "Accept-Encoding");
-                connect.addRequestProperty("Cache-Control", "max-age=0");
-                connect.addRequestProperty("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8");
-                connect.addRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/30.0.1599.101 Safari/537.36");
-                //connect.addRequestProperty("Accept-Encoding", "gzip,deflate,sdch");
-                connect.addRequestProperty("Accept-Language", "vi-VN,vi;q=0.8,fr-FR;q=0.6,fr;q=0.4,en-US;q=0.2,en;q=0.2");
-
                 connect.connect()
 
                 val responseCode: Int = connect.responseCode

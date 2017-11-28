@@ -123,7 +123,7 @@ class OnlineFragment : Fragment(), View.OnClickListener {
 
         if (p0.id != R.id.top100 && p0.id != R.id.chudevatheloai) {
             //Lấy source xong thì chuyển trang
-            listener.openDetailOrPlayerFragment(linkTrust)
+            listener.openDetailOrPlayerFragment(linkTrust, null)
         }
 
 

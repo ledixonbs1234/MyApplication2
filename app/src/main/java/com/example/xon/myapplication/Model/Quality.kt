@@ -16,15 +16,15 @@ class Quality {
         this.lossless = lossless
     }
 
-    fun getHighQuality(): String {
+    fun getHighQuality(): Qualities {
         if (!lossless.isNullOrEmpty()) {
-            return "Lossless"
+            return Qualities.Lossless
         } else if (!q500.isNullOrEmpty())
-            return "500 Kbs"
+            return Qualities.q500
         else if (!q320.isNullOrEmpty())
-            return "320 Kbs"
+            return Qualities.q320
         else
-            return "128 Kbs"
+            return Qualities.q128
     }
 
     constructor()

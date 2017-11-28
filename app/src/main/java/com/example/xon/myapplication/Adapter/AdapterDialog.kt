@@ -9,9 +9,6 @@ import android.widget.TextView
 import com.example.xon.myapplication.Model.DataSongQualitySimple
 import com.example.xon.myapplication.R
 
-/**
- * Created by Administrator on 11/21/2017.
- */
 class AdapterDialog : BaseAdapter {
 
     lateinit var datas: ArrayList<DataSongQualitySimple>
@@ -31,7 +28,7 @@ class AdapterDialog : BaseAdapter {
 
         view.findViewById<TextView>(R.id.songnamedialog).text = datas.get(p0).songName
         view.findViewById<TextView>(R.id.tencasidialog).text = datas.get(p0).artist
-        view.findViewById<TextView>(R.id.qualitydialog).text = datas.get(p0).quality.getHighQuality()
+        view.findViewById<TextView>(R.id.qualitydialog).text = datas.get(p0).qualityShow.name
         view.findViewById<TextView>(R.id.countdialogid).text = (p0 + 1).toString()
         return view
     }

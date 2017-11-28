@@ -16,18 +16,15 @@ class InfoDetail {
     var Type: String = ""
     var Link: String = ""
     var Lyric: String = ""
-    var Thumbnail: String =""
-    var MVLink: String =""
-    lateinit var ArtistInf : ArtistInfo
+    var Thumbnail: String = ""
+    var MVLink: String = ""
+    lateinit var ArtistInf: ArtistInfo
     lateinit var Sources: Quality
-    var STT : String = ""
+    var STT: String = ""
 
     // var someProperty: String = ""
-   //     get() = field
-   //     set(value) { field = value }
-
-
-
+    //     get() = field
+    //     set(value) { field = value }
 
 
 }

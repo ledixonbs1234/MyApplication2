@@ -58,7 +58,7 @@ class FragmentDetailType : Fragment {
     private fun getSourceTop() {
         var source = getSourceJsonWeb(mTypeUrl)
         var n = Pattern.compile("album-item(\\W|\\w)+?href=\"((\\w|\\W)+?)\"(\\w|\\W)+?src=\"((\\w|\\W)+?)\"(\\w|\\W)+?alt=\"((\\w|\\W)+?)\"").matcher(source)
-        var sourceFill: String = ""
+
         while (n.find()) {
             mItems.add(DataWebModel(n.group(5), "https://mp3.zing.vn" + n.group(2), n.group(8)))
         }

@@ -7,7 +7,7 @@
 
     <TextView
         android:id="@+id/countid"
-        android:layout_width="50dp"
+        android:layout_width="40dp"
         android:layout_height="50dp"
         android:gravity="center"
         android:text="1"
@@ -48,6 +48,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Lossless"
+        android:textSize="11sp"
         android:textColor="#ff3c42"
         app:layout_constraintEnd_toStartOf="@id/btndownloadmusic"
         app:layout_constraintTop_toTopOf="parent" />

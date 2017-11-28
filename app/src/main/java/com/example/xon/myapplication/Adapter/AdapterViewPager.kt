@@ -9,8 +9,8 @@ import android.support.v4.app.FragmentPagerAdapter
  */
 class AdapterViewPager : FragmentPagerAdapter {
 
-    var fragments : ArrayList<Fragment> = ArrayList<Fragment>()
-    var titles : ArrayList<String> = ArrayList<String>()
+    var fragments: ArrayList<Fragment> = ArrayList<Fragment>()
+    var titles: ArrayList<String> = ArrayList<String>()
 
     constructor(fm: FragmentManager) : super(fm)
 
@@ -18,7 +18,7 @@ class AdapterViewPager : FragmentPagerAdapter {
         return fragments.get(position)
     }
 
-    fun addFragment(fragment : Fragment,title : String){
+    fun addFragment(fragment: Fragment, title: String) {
         fragments.add(fragment)
         titles.add(title)
     }

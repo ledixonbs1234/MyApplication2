@@ -60,7 +60,7 @@ class AdapterViewTypeDetail : RecyclerView.Adapter<AdapterViewTypeDetail.ViewHol
             urlImage.setOnClickListener(object : View.OnClickListener {
                 override fun onClick(p0: View?) {
                     var item = mStrings.get(adapterPosition)
-                    listener.openDetailOrPlayerFragment(item.urlWeb)
+                    listener.openDetailOrPlayerFragment(item.urlWeb, null)
                 }
             })
         }

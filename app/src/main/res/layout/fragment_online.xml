@@ -40,40 +40,73 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+
             <me.relex.circleindicator.CircleIndicator
                 android:id="@+id/cirbanner"
                 android:layout_width="0dp"
-                android:layout_height="41dp"
+                android:layout_height="40dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 app:ci_gravity="right"
-                app:ci_height="5dp"
+                app:ci_height="7dp"
                 app:ci_orientation="horizontal"
-                app:ci_width="5dp"
+                app:ci_width="7dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/viewpagerBannerId" />
+
+            <TextView
+                android:id="@+id/playlistlabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Playlist"
+                app:layout_constraintTop_toBottomOf="@+id/viewpagerBannerId"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="30dp"
+                android:textColor="#000"
+                android:textSize="20sp" />
+
+            <ImageButton
+                android:id="@+id/playlistview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:background="#00ffffff"
+                android:padding="8dp"
+                android:scaleType="center"
+                app:layout_constraintBottom_toBottomOf="@+id/playlistlabel"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:srcCompat="@drawable/ic_receipt_black_30dp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:background="#3caaf9"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/playlistlabel" />
 
             <ImageButton
                 android:id="@+id/first"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:layout_gravity="fill"
-                android:layout_marginTop="16dp"
                 android:background="@android:color/transparent"
                 android:padding="0dp"
                 android:scaleType="fitXY"
+                android:layout_marginTop="25dp"
                 app:layout_constraintEnd_toStartOf="@+id/second"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/viewpagerBannerId" />
+                app:layout_constraintTop_toBottomOf="@+id/playlistlabel" />
 
             <TextView
                 android:id="@+id/firsttext"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
+                android:textSize="10sp"
                 android:text="Day la cai vi du"
                 app:layout_constraintStart_toStartOf="@+id/first"
                 app:layout_constraintTop_toBottomOf="@+id/first" />
@@ -84,6 +117,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="Day la cai vi du"
+                android:textSize="10sp"
                 app:layout_constraintStart_toStartOf="@+id/second"
                 app:layout_constraintTop_toBottomOf="@+id/second" />
 
@@ -121,50 +155,43 @@
                 android:layout_margin="8dp"
                 android:layout_marginTop="8dp"
                 android:text="Day la cai vi du"
+                android:textSize="10sp"
                 app:layout_constraintStart_toStartOf="@+id/third"
                 app:layout_constraintTop_toBottomOf="@+id/third" />
 
             <ImageButton
                 android:id="@+id/four"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
                 android:layout_gravity="fill"
                 android:background="@android:color/transparent"
-                android:padding="0dp"
                 android:scaleType="fitXY"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintTop_toTopOf="@+id/third"
                 app:layout_constraintStart_toEndOf="@+id/third"
-                app:layout_constraintTop_toTopOf="@+id/third" />
+                app:layout_constraintHorizontal_bias="0.5" />
 
             <TextView
                 android:id="@+id/fourtext"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:text="Day la cai vi du"
+                android:textSize="10sp"
                 app:layout_constraintStart_toStartOf="@+id/four"
                 app:layout_constraintTop_toTopOf="@+id/thirdtext" />
-
-            <Button
-                app:srcCompat="@drawable/ic_add_black_24dp"
-                android:id="@+id/button4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="Xem Thêm"
-                app:layout_constraintTop_toBottomOf="@+id/fourtext" />
 
 
             <TextView
                 android:id="@+id/labelbxh"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="10dp"
                 android:text="BXH Zing"
                 android:textColor="#000"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/button4" />
+                app:layout_constraintTop_toBottomOf="@+id/fourtext" />
 
             <Button
                 android:id="@+id/button"
@@ -176,30 +203,45 @@
                 app:layout_constraintStart_toEndOf="@+id/labelbxh" />
 
             <ImageButton
-                app:srcCompat="@drawable/ic_add_black_24dp"
                 android:id="@+id/bxhvietnam"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:text="xem them"
+                android:background="#00ffffff"
+                android:padding="8dp"
                 app:layout_constraintBottom_toBottomOf="@id/labelbxh"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:srcCompat="@drawable/ic_receipt_black_30dp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:background="#3caaf9"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/labelbxh" />
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/bangxephang"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:nestedScrollingEnabled="false"
                 android:layout_marginTop="8dp"
+                android:nestedScrollingEnabled="false"
                 android:scrollbars="none"
                 app:layout_constraintTop_toBottomOf="@+id/labelbxh" />
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:background="#f59a98"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/bangxephang" />
 
             <Button
                 android:id="@+id/bxhaumy"
                 android:layout_width="130dp"
                 android:layout_height="wrap_content"
                 android:text="BXh ÂU MỸ"
+                android:background="#00ffffff"
                 app:layout_constraintEnd_toStartOf="@id/bxhhanquoc"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
@@ -210,17 +252,19 @@
                 android:layout_width="130dp"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@+id/bxhaumy"
+                android:background="#00ffffff"
                 android:text="BXh HÀN QUỐC"
-                app:layout_constraintTop_toTopOf="@id/bxhaumy"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@id/bxhaumy" />
+                app:layout_constraintStart_toEndOf="@id/bxhaumy"
+                app:layout_constraintTop_toTopOf="@id/bxhaumy" />
 
             <Button
-                android:layout_below="@+id/bxhaumy"
                 android:id="@+id/realtime"
                 android:layout_width="130dp"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/bxhaumy"
+                android:background="#00ffffff"
                 android:text="Real Time"
                 app:layout_constraintEnd_toStartOf="@id/top100"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -229,37 +273,55 @@
 
             <Button
                 android:id="@+id/top100"
-                android:layout_below="@+id/bxhhanquoc"
-                android:layout_toRightOf="@+id/realtime"
                 android:layout_width="130dp"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/bxhhanquoc"
+                android:layout_toRightOf="@+id/realtime"
+                android:background="#00ffffff"
                 android:text="TOP 100"
-                app:layout_constraintTop_toTopOf="@id/realtime"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@id/realtime" />
+                app:layout_constraintStart_toEndOf="@id/realtime"
+                app:layout_constraintTop_toTopOf="@id/realtime" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:background="#9af7bb"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/top100" />
 
 
             <TextView
                 android:id="@+id/labelchude"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:layout_marginLeft="10dp"
                 android:text="CHỦ ĐỀ VÀ THỂ LOẠI"
                 android:textColor="#000"
-                android:textSize="17sp"
-                android:layout_marginTop="20dp"
+                android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/realtime" />
 
             <ImageButton
                 android:id="@+id/chudevatheloai"
-                app:srcCompat="@drawable/ic_add_black_24dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:text="xem them"
+                android:background="#00ffffff"
+                android:padding="8dp"
+                app:layout_constraintBottom_toBottomOf="@id/labelchude"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toBottomOf="@id/labelchude" />
+                app:srcCompat="@drawable/ic_receipt_black_30dp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:background="#3caaf9"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/chudevatheloai" />
+
 
             <android.support.v7.widget.RecyclerView
                 android:layout_width="match_parent"
